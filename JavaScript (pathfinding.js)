@@ -1,0 +1,36 @@
+const gridContainer = document.getElementById('grid');
+const visualizeButton = document.querySelector('button');
+
+// Create grid
+for (let i = 0; i < 10; i++) {
+    for (let j = 0; j < 20; j++) {
+        const cell = document.createElement('div');
+        gridContainer.appendChild(cell);
+    }
+}
+
+const cells = document.querySelectorAll('#grid > div');
+let startNode = null;
+let endNode = null;
+
+// Add event listeners to cells for start and end node selection
+cells.forEach(cell => {
+    cell.addEventListener('click', () => {
+        if (!startNode) {
+            cell.classList.add('start');
+            startNode = cell;
+        } else if (!endNode) {
+            cell.classList.add('end');
+            endNode = cell;
+            visualizeButton.disabled = false;
+        } else {
+            cell.classList.toggle('obstacle');
+        }
+    });
+});
+
+// A* Algorithm
+function visualizeAStar() {
+    // Implement A* algorithm visualization here
+    // Update the grid classes to show the process
+}
